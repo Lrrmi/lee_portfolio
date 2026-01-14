@@ -15,9 +15,7 @@ function App() {
 export default App
 
 const theme = createTheme({
-  /** Your theme override here */
    colors: {
-    // Add your color
     deepBlue: [
       '#eef3ff',
       '#dce4f5',
@@ -32,11 +30,3 @@ const theme = createTheme({
     ]
   }
 });
-
-// function Demo() {
-//   return (
-//     <MantineProvider theme={theme}>
-//       {/* Your app here */}
-//     </MantineProvider>
-//   );
-// }
