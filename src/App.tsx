@@ -1,12 +1,14 @@
 import '@mantine/core/styles.css';
 
 import { createTheme, MantineProvider } from '@mantine/core';
+import { HeaderSimple } from './components/HeaderSimple';
 
 function App() {
 
   return (
   <MantineProvider theme={theme}>
     <>
+    <HeaderSimple />
     </>
     </MantineProvider>
   )
