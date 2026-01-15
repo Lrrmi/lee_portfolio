@@ -9,10 +9,10 @@ import logo from "../../src/assets/logo/logo192.png";
 export const Navbar = () => {
     return (
     <NavigationMenu>
-  <NavigationMenuList>
+  <NavigationMenuList className="mt-5 md:gap-7">
     <NavigationMenuItem>
-      <NavigationMenuLink className="hover:bg-transparent hover:text-inherit">
-        <img className="h-20 m-5" src={logo} alt="Logo" />
+      <NavigationMenuLink className="hover:bg-transparent hover:text-inherit md:m-2">
+        <img className="md:h-20 w-auto" src={logo} alt="Logo" />
         </NavigationMenuLink>
       </NavigationMenuItem>
     <NavigationMenuItem>
