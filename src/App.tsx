@@ -1,15 +1,15 @@
+import { Outlet } from '@tanstack/react-router'
+
 import './index.css'
 import { Navbar } from './components/Navbar'
-
 
 function App() {
 
   return (
-    <>
-    <body className="bg-[#595961]">
+    <div className="min-h-screen">
     <Navbar />
-    </body>
-    </>
+    <Outlet />
+    </div>
   )
 }
 
