@@ -5,12 +5,12 @@ export const AboutPage = () => {
 	return (
 		<>
 			<img
-				className="float-right h-100 ml-6 mt-4"
+				className="mb-4 md:mb-0 float-right h-100 ml-6 mt-4 object-cover"
 				src={profilePic}
 				alt="Lee Adams"
 			></img>
 			<div className="text-[#dfdedf]">
-				<h2 className="text-4xl">Design Philosophy</h2>
+				<h2 className="text-center md:text-left text-4xl">Design Philosophy</h2>
 				<br />
 				<br />
 				<p className="text-justify">
