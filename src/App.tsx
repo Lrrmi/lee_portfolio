@@ -6,7 +6,9 @@ function App() {
 	return (
 		<div className="min-h-screen">
 			<Navbar />
-			<Outlet />
+			<div className="w-3/4 mx-auto">
+				<Outlet />
+			</div>
 		</div>
 	);
 }

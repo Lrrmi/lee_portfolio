@@ -1,6 +1,6 @@
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/separator";
 
-// Separator at top 
+// Separator at top
 // grid for rest
 
 export const PotpourriPage = () => {};
