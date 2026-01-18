@@ -1,1 +1,1 @@
-export const PotpourriPage = () => {}
+export const PotpourriPage = () => {};

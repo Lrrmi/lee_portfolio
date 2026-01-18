@@ -1,3 +1,1 @@
-export const AboutPage = () => {
-
-}
+export const AboutPage = () => {};

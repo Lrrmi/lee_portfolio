@@ -1,8 +1,8 @@
-import { Outlet } from '@tanstack/react-router'
+import { Outlet } from "@tanstack/react-router";
 
 export const ProjectsPage = () => {
-    <>
-    <h1>placeholder</h1>
-    <Outlet />
-    </>
-}
+	<>
+		<h1>placeholder</h1>
+		<Outlet />
+	</>;
+};

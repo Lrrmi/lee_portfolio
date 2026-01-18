@@ -1,1 +1,1 @@
-export const ProjectPage = () => {}
+export const ProjectPage = () => {};
