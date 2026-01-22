@@ -8,7 +8,8 @@
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"format": "exec biome check --write"
+		"format": "exec biome check --write",
+		"prebuild": "node src/scripts/generate-images.mjs && node src/scripts/generate-potpourri.mjs"
 	},
 	"dependencies": {
 		"@radix-ui/react-navigation-menu": "^1.2.14",
