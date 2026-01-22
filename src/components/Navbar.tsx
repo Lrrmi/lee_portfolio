@@ -10,7 +10,7 @@ import logo from "../../src/assets/logo/logo192.png";
 export const Navbar = () => {
 	return (
 		<NavigationMenu>
-			<NavigationMenuList className="mt-5 md:gap-7">
+			<NavigationMenuList className="mt-5 md:gap-7 md:ml-4">
 				<NavigationMenuItem>
 					<Link
 						to="/"
