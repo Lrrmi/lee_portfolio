@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import logo from "../../src/assets/logo/logo192.png";
 
+const navItems = ["projects", "about", "contact", "potpourri"];
+
 // have to use ! b/c the styling from shadcn overrides the tanstack component styles
 export const Navbar = () => {
 	return (
@@ -19,50 +21,19 @@ export const Navbar = () => {
 						<img className="md:h-20 w-auto" src={logo} alt="Logo" />
 					</Link>
 				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<Link
-						to="/projects"
-						className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
-						activeProps={{
-							className: "text-foreground underline",
-						}}
-					>
-						projects
-					</Link>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<Link
-						to="/about"
-						className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
-						activeProps={{
-							className: "text-foreground underline",
-						}}
-					>
-						about
-					</Link>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<Link
-						to="/contact"
-						className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
-						activeProps={{
-							className: "text-foreground underline",
-						}}
-					>
-						contact
-					</Link>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<Link
-						to="/potpourri"
-						className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
-						activeProps={{
-							className: "text-foreground underline",
-						}}
-					>
-						potpourri
-					</Link>
-				</NavigationMenuItem>
+				{navItems.map((navItem) => {
+					return (
+					<NavigationMenuItem key={navItem}>
+						<Link 
+							to={`/${navItem}` as string}
+							className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
+							activeProps={{
+								className: "text-foreground underline",
+							}}
+						>{navItem}
+						</Link>
+					</NavigationMenuItem>
+				)})}
 			</NavigationMenuList>
 		</NavigationMenu>
 	);
