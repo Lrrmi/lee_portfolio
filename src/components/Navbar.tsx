@@ -23,17 +23,19 @@ export const Navbar = () => {
 				</NavigationMenuItem>
 				{navItems.map((navItem) => {
 					return (
-					<NavigationMenuItem key={navItem}>
-						<Link 
-							to={`/${navItem}` as string}
-							className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
-							activeProps={{
-								className: "text-foreground underline",
-							}}
-						>{navItem}
-						</Link>
-					</NavigationMenuItem>
-				)})}
+						<NavigationMenuItem key={navItem}>
+							<Link
+								to={`/${navItem}` as string}
+								className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
+								activeProps={{
+									className: "text-foreground underline",
+								}}
+							>
+								{navItem}
+							</Link>
+						</NavigationMenuItem>
+					);
+				})}
 			</NavigationMenuList>
 		</NavigationMenu>
 	);
