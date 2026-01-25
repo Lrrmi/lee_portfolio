@@ -3,9 +3,14 @@ import { Separator } from "@/components/ui/separator";
 import { projectRoute } from "@/router";
 import projImages from "../images.json";
 
+type Meta = {
+	title: string;
+	description: string;
+}
+
 type ImageMeta = {
 	folder: string;
-	meta: any;
+	meta: Meta;
 	png?: string[];
 	jpg?: string[];
 };
