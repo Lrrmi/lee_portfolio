@@ -1,5 +1,3 @@
-import projects from "../images.json";
-
 type Module = {
 	default: string;
 };
