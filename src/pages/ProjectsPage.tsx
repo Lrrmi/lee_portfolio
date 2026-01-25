@@ -1,48 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Separator } from "@/components/ui/separator";
 import { projectRoute } from "@/router";
-import projImages from "../images.json";
 
-type Meta = {
-	title: string;
-	description: string;
-}
-
-type ImageMeta = {
-	folder: string;
-	meta: Meta;
-	png?: string[];
-	jpg?: string[];
-};
+import projs from "../images.json";
 
 export const ProjectsPage = () => {
-	const modules = import.meta.glob<{ default: string }>(
-		"/src/assets/images/**/*.{png,jpg,jpeg,webp,svg}",
-		{ eager: true },
-	);
-
-	const projs = projImages.map((folder: ImageMeta) => {
-		const allFiles: string[] = [];
-
-		["png"].forEach((ext) => {
-			const files = (folder as any)[ext];
-			if (!files) return;
-
-			files.forEach((file: string) => {
-				const pathKey = `/src/assets/images/${folder.folder}/${file}`;
-
-				const mod = (modules as Record<string, { default: string }>)[pathKey];
-				if (mod) allFiles.push(mod.default);
-			});
-		});
-
-		return {
-			folder: folder.folder,
-			meta: folder.meta,
-			images: allFiles,
-		};
-	});
-
 	return (
 		<div className="flex">
 			<div className="hidden md:flex md:flex-col w-1/8 gap-2 mt-20 text-[#dfdedf]">
@@ -62,7 +24,7 @@ export const ProjectsPage = () => {
 				<Separator className="mb-8" />
 				<div className="grid grid-cols-2 gap-x-4 lg:gap-x-50 lg:gap-y-4 justify-items-center items-center">
 					{projs.map((proj) =>
-						proj.images.map((src) => (
+						proj.png.map((src) => (
 							<div key={src} className="inline-block">
 								<Link
 									key={src}

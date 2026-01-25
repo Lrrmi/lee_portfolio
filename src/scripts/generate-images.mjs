@@ -32,7 +32,11 @@ const readFolder = (folderPath) => {
 			if (!["png", "jpg", "jpeg", "webp", "svg"].includes(ext)) continue;
 
 			if (!result[ext]) result[ext] = [];
-			result[ext].push(item.name);
+
+			const relativePath = path
+				.relative(imagesDir, itemPath)
+				.replace(/\\/g, "/");
+			result[ext].push(`/src/assets/images/${relativePath}`);
 		}
 	}
 
