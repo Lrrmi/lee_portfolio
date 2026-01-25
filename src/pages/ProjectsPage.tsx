@@ -51,9 +51,11 @@ export const ProjectsPage = () => {
 					</Link>
 				))}
 			</div>
-			<div className="flex-1">
+			<div className="flex-1 flex justify-center">
+				<div className="w-full max-w-6xl">
+					<div className="mx-auto w-fit">
 				<Separator className="mb-8" />
-				<div className="grid grid-cols-2 gap-4">
+				<div className="grid grid-cols-2 gap-x-4 lg:gap-x-50 lg:gap-y-4 justify-items-center items-center">
 					{projs.map((proj) =>
 						proj.images.map((src) => (
 							<div key={src} className="inline-block">
@@ -63,15 +65,19 @@ export const ProjectsPage = () => {
 									params={{ project: proj.meta.title }}
 									className="inline-block"
 								>
+									<div className="md:w-70 aspect-[4/5] overflow-hidden">
 									<img
 										src={src}
 										alt={proj.meta.title}
-										className="w-full max-w-xs rounded-lg"
+										className="w-full h-full object-contain"
 									/>
+									</div>
 								</Link>
 							</div>
 						)),
 					)}
+				</div>
+				</div>
 				</div>
 			</div>
 		</div>
