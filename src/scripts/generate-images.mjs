@@ -29,7 +29,7 @@ const readFolder = (folderPath) => {
 		} else if (item.isFile()) {
 			if (item.name === "meta.json") continue;
 			const ext = path.extname(item.name).toLowerCase().replace(".", "");
-			if (!["png", "jpg", "jpeg", "webp", "svg"].includes(ext)) continue;
+			if (!["png", "jpg", "jpeg", "webp", "svg", "glb"].includes(ext)) continue;
 
 			if (!result[ext]) result[ext] = [];
 

@@ -11,6 +11,9 @@
       "/src/assets/images/1Seville/SEV_3.jpg",
       "/src/assets/images/1Seville/SEV_4.jpg"
     ],
+    "glb": [
+      "/src/assets/images/1Seville/SevilleChair.glb"
+    ],
     "png": [
       "/src/assets/images/1Seville/Seville_Lineart_01.png"
     ]
@@ -28,6 +31,9 @@
       "/src/assets/images/2Slade/SLA_4.jpg",
       "/src/assets/images/2Slade/SLA_5.jpg"
     ],
+    "glb": [
+      "/src/assets/images/2Slade/SladeLounge.glb"
+    ],
     "png": [
       "/src/assets/images/2Slade/Slade_Lineart_01.png"
     ]
@@ -38,6 +44,9 @@
       "title": "Savannah",
       "description": "Inspired by the picturesque city of Savannah, this sleek contemporary collection has exaggerated slopes creating a dynamic look while keeping its comfort."
     },
+    "glb": [
+      "/src/assets/images/3Savannah/SAVDHChair.glb"
+    ],
     "jpg": [
       "/src/assets/images/3Savannah/SAV_1.jpg",
       "/src/assets/images/3Savannah/SAV_2.jpg",
@@ -54,6 +63,9 @@
       "title": "Orchid",
       "description": "This robust farmhouse style collection designed for hospitality settings gives generous room and comfortability."
     },
+    "glb": [
+      "/src/assets/images/4Orchid/CALDHChair.glb"
+    ],
     "jpg": [
       "/src/assets/images/4Orchid/ORC_1.jpg",
       "/src/assets/images/4Orchid/ORC_2.jpg",
@@ -77,6 +89,9 @@
       "/src/assets/images/6Cloister/CLO_4.jpg",
       "/src/assets/images/6Cloister/CLO_5.jpg"
     ],
+    "glb": [
+      "/src/assets/images/6Cloister/CloisterRect.glb"
+    ],
     "png": [
       "/src/assets/images/6Cloister/Cloister_Lineart 02.png"
     ]
@@ -94,6 +109,9 @@
     ],
     "png": [
       "/src/assets/images/7LightWeight/LW_Lineart 02.png"
+    ],
+    "glb": [
+      "/src/assets/images/7LightWeight/LightWeight.glb"
     ]
   },
   {
@@ -107,6 +125,9 @@
       "/src/assets/images/8Kokeshi/KOK_2.jpg",
       "/src/assets/images/8Kokeshi/KOK_3.jpg",
       "/src/assets/images/8Kokeshi/KOK_4.jpg"
+    ],
+    "glb": [
+      "/src/assets/images/8Kokeshi/KokeshiDiningTable.glb"
     ],
     "png": [
       "/src/assets/images/8Kokeshi/Kokeshi_Lineart 02.png"
@@ -130,6 +151,9 @@
     ],
     "png": [
       "/src/assets/images/9Edda/EddaCab_Lineart 01.png"
+    ],
+    "glb": [
+      "/src/assets/images/9Edda/EddaTable.glb"
     ]
   },
   {
@@ -144,6 +168,9 @@
       "/src/assets/images/10Para/PARA_3.jpg",
       "/src/assets/images/10Para/PARA_4.jpg"
     ],
+    "glb": [
+      "/src/assets/images/10Para/ParaChair.glb"
+    ],
     "png": [
       "/src/assets/images/10Para/Para_Lineart 02.png"
     ]
@@ -154,6 +181,9 @@
       "title": "Saint Simon",
       "description": "Named after the island resort in Georgia, the Saint Simons is a contemporary take on the modern adirondack lounge chair. Designed out of HDPE this collection is easy to produce and made out of recycled materials to reduce environmental impact."
     },
+    "glb": [
+      "/src/assets/images/11SaintSimon/STSLoungeCup.glb"
+    ],
     "jpg": [
       "/src/assets/images/11SaintSimon/STS_1.jpg",
       "/src/assets/images/11SaintSimon/STS_2.jpg",
