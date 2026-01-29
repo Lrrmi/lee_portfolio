@@ -1,42 +1,48 @@
-import { useGLTF } from "@react-three/drei";
-import { Canvas, useFrame, useThree, } from "@react-three/fiber";
-import { CuboidCollider, Physics, RigidBody } from "@react-three/rapier";
-import { type RefObject, Suspense, useRef, useState } from "react";
+import { DragControls, useGLTF } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Physics, RapierRigidBody, RigidBody } from "@react-three/rapier";
+import { RigidBodyType } from "@dimforge/rapier3d-compat"
+import { type RefObject, Suspense, useRef } from "react";
 import furnitures from "../../images.json";
 
+// recolor te model
+// fix the physics so touch and grab can happen
+// Add walls(?)
+// Randomize models to appear
+// Add loading icon for suspense
 type FallingCubeProps = {
 	initialPosition: [number, number, number];
 	spawnHeight: number;
 	groundPos: number;
 	canvasRef: RefObject<HTMLDivElement | null>;
-    glbPath: string;
+	glbPath: string;
+	furnitureRef: RefObject<RapierRigidBody | null>;
 };
 
 function getRandomIntInclusive(min: number, max: number) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+	const minCeiled = Math.ceil(min);
+	const maxFloored = Math.floor(max);
+	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
 const RANDOMMIN = -50;
-    const RANDOMMAX = 50;
+const RANDOMMAX = 50;
 
 function Furniture({
 	initialPosition,
 	spawnHeight,
 	groundPos,
 	canvasRef,
-    glbPath,
+	glbPath,
+	furnitureRef
 }: FallingCubeProps) {
-    const [isDragging, setDragging] = useState(false);
-	const ref = useRef<any>(null);;
+
 	const gltf = useGLTF(glbPath);
 
-
 	useFrame(({ camera }) => {
-		if (!ref.current) return;
+		if (!furnitureRef.current) return;
 
-		const { y } = ref.current.translation();
+		const { y } = furnitureRef.current.translation()
 
 		if (y < groundPos) {
 			let width = 0;
@@ -55,7 +61,7 @@ function Furniture({
 			const visibleWidth = visibleHeight * aspect;
 			const randomX = (Math.random() - 0.5) * visibleWidth;
 
-			ref.current.setTranslation(
+			furnitureRef.current.setTranslation(
 				{
 					x: randomX,
 					y: spawnHeight,
@@ -65,11 +71,11 @@ function Furniture({
 			);
 
 			// Adding a little more spin factor for good measure
-			ref.current.setLinvel(
+			furnitureRef.current.setLinvel(
 				{ x: getRandomIntInclusive(RANDOMMIN, RANDOMMAX), y: 0, z: 0 },
 				true,
 			);
-			ref.current.setAngvel(
+			furnitureRef.current.setAngvel(
 				{
 					x: Math.random() * 4 - 1,
 					y: Math.random() * 4 - 1,
@@ -77,39 +83,32 @@ function Furniture({
 				},
 				true,
 			);
-			ref.current.wakeUp();
+			furnitureRef.current.wakeUp();
 		}
 	});
 
 	return (
 		<RigidBody
-			ref={ref}
-			// type="dynamic"
-			// colliders="hull"
-            colliders="cuboid"
+			ref={furnitureRef}
+			colliders="cuboid"
 			restitution={2}
 			angularDamping={0.2}
 			angularVelocity={[0.3, 0.3, 0]}
 			position={initialPosition}
-			onClick={(e) => {
-				console.log("I was clicked!", e.object);
-			}}
 		>
 			<primitive object={gltf.scene.clone()} />
-             {/* <CuboidCollider args={[1,1,1]} /> */}
 		</RigidBody>
 	);
 }
 
 export const TestScene = () => {
-	const projects = furnitures.map(({glb: [glb]}) => glb)
-    // error with projects[4]
-    console.log(projects[4])
+	const projects = furnitures.map(({ glb: [glb] }) => glb);
 	const canvasRef = useRef<HTMLDivElement>(null);
+	const furnitureRef = useRef<RapierRigidBody | null>(null);
 
 	const spawnHeight = 250;
 	const groundPos = -1000;
-    const gravity = getRandomIntInclusive(RANDOMMIN, RANDOMMAX);
+	const gravity = getRandomIntInclusive(RANDOMMIN, RANDOMMAX);
 
 	return (
 		<div className="h-screen w-full" ref={canvasRef}>
@@ -117,20 +116,40 @@ export const TestScene = () => {
 				<ambientLight intensity={0.1} />
 				<directionalLight color="#dfdedf" position={[0, 0, 5]} />
 				<Suspense>
-					<Physics gravity={[gravity, -20, 0]}>
-                        {projects.map((project) => {
-                            return (
-                            <Furniture
-							initialPosition={[getRandomIntInclusive(RANDOMMIN, RANDOMMAX), 250, 0]}
-							spawnHeight={spawnHeight}
-							groundPos={groundPos}
-							canvasRef={canvasRef}
-                            key={project}
-                            glbPath={project}
-						/>
-                            )
-                        })}
-						
+					<Physics gravity={[gravity, -20, 0]} debug>
+						{projects.map((project) => {
+							return (
+								<DragControls
+									key={project+"dragcontrol"}
+									objects={furnitureRef.current ? [furnitureRef.current] : []}
+									tranformGroup={false}
+									onDragStart={() => {
+											if (furnitureRef.current) {
+												furnitureRef.current.setBodyType(RigidBodyType.KinematicPositionBased, true);
+											}
+										
+									}}
+									onDragEnd={() => {
+											if (furnitureRef.current) {
+                                                furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
+                                            }
+									}}
+								>
+									<Furniture
+										initialPosition={[
+											getRandomIntInclusive(RANDOMMIN, RANDOMMAX),
+											250,
+											0,
+										]}
+										spawnHeight={spawnHeight}
+										groundPos={groundPos}
+										canvasRef={canvasRef}
+										glbPath={project}
+										furnitureRef={furnitureRef}
+									/>
+								</DragControls>
+							);
+						})}
 					</Physics>
 				</Suspense>
 			</Canvas>
