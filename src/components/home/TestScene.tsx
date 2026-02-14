@@ -1,9 +1,6 @@
-import { RigidBodyType } from "@dimforge/rapier3d-compat";
-import { useGLTF } from "@react-three/drei";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Physics, type RapierRigidBody, RigidBody } from "@react-three/rapier";
-import { type RefObject, Suspense, useEffect, useRef } from "react";
-import * as THREE from "three";
+import { Canvas } from "@react-three/fiber";
+import { Physics } from "@react-three/rapier";
+import { Suspense, useRef } from "react";
 import furnitures from "../../images.json";
 import { Furniture } from "./Furniture";
 
