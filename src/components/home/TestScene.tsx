@@ -54,19 +54,18 @@ function Furniture({ initialPosition, canvasRef, glbPath }: FallingCubeProps) {
 	};
 
 	useEffect(() => {
-  const release = () => {
-    if (!dragging.current || !furnitureRef.current) return
+		const release = () => {
+			if (!dragging.current || !furnitureRef.current) return;
 
-    dragging.current = false
+			dragging.current = false;
 
-    furnitureRef.current.setGravityScale(1, true)
-    furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true)
-  }
+			furnitureRef.current.setGravityScale(1, true);
+			furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
+		};
 
-  window.addEventListener("pointerup", release)
-  return () => window.removeEventListener("pointerup", release)
-}, [])
-
+		window.addEventListener("pointerup", release);
+		return () => window.removeEventListener("pointerup", release);
+	}, []);
 
 	useFrame(() => {
 		if (!dragging.current) return;
@@ -143,19 +142,19 @@ function Furniture({ initialPosition, canvasRef, glbPath }: FallingCubeProps) {
 	});
 
 	return (
-			<RigidBody
-				ref={furnitureRef}
-				colliders="cuboid"
-				restitution={2}
-				angularDamping={0.2}
-				angularVelocity={[0.3, 0.3, 0]}
-				position={initialPosition}
-			>
-				<primitive
-					object={gltf.scene}
-					onPointerDown={handlePointerDown}
-				/>
-			</RigidBody>
+		<RigidBody
+			ref={furnitureRef}
+			colliders="cuboid"
+			restitution={0}
+			friction={1.2}
+			mass={8}
+			linearDamping={0.5}
+			angularDamping={0.5}
+			enabledTranslations={[true, true, false]}
+			enabledRotations={[true, true, true]}
+		>
+			<primitive object={gltf.scene} onPointerDown={handlePointerDown} />
+		</RigidBody>
 	);
 }
 
