@@ -45,7 +45,7 @@ export const ProjectPage = () => {
 					</div>
 				</CarouselItem>
 				<CarouselItem className="basis-auto">
-					<div className="h-[70vh] flex flex-row sm:flex-col justify-between px-4 gap-4">
+					<div className="h-[70vh] flex flex-col justify-between px-4 gap-4">
 						{projectImages.png.map((src) => (
 							<img
 								key={src}
@@ -69,7 +69,7 @@ export const ProjectPage = () => {
 							<img
 								src={src}
 								alt={src}
-								className="h-full w-auto rounded-lg object-cover"
+								className="w-screen sm:h-full sm:w-auto rounded-lg object-contain sm:object-cover"
 							/>
 						</div>
 					</CarouselItem>
