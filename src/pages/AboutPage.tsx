@@ -3,17 +3,18 @@ import profilePic from "../assets/images/DSC_9635.jpg";
 
 export const AboutPage = () => {
 	return (
-		<>
-			<img
-				className="mb-4 md:mb-0 float-right h-100 ml-6 mt-4 object-cover"
-				src={profilePic}
-				alt="Lee Adams"
-			></img>
-			<div className="text-[#dfdedf]">
-				<h2 className="text-center sm:text-left text-4xl">Design Philosophy</h2>
-				<br />
-				<br />
-				<p className="text-justify">
+		<div className="text-[#dfdedf]">
+			<h2 className="text-center sm:text-left text-4xl">Design Philosophy</h2>
+			<br />
+			<p className="text-justify sm:flex sm:flex-row-reverse">
+				<div>
+					<img
+						className="mb-4 md:mb-0 float-right mt-4 object-cover"
+						src={profilePic}
+						alt="Lee Adams"
+					/>
+				</div>
+				<div className="mr-8">
 					<b>About</b>
 					<br />
 					<br />I am an American industrial designer trained in both traditional
@@ -69,13 +70,13 @@ export const AboutPage = () => {
 					whatever is needed for the client to see and approve the production
 					work. Then I work with the client’s team or help select contracted
 					vendors to cost-effectively produce the desired item.
-				</p>
-				<br />
-				<br />
-				<Separator />
-				<br />
-				<br />
-			</div>
-		</>
+				</div>
+			</p>
+			<br />
+			<br />
+			<Separator />
+			<br />
+			<br />
+		</div>
 	);
 };
