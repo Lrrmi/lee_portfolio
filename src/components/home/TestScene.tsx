@@ -9,12 +9,8 @@ export const getRandomIntInclusive = (min: number, max: number) => {
 	return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 };
 
-const RANDOMMIN = -50;
-const RANDOMMAX = 50;
-
 export const TestScene = () => {
 	const canvasRef = useRef<HTMLDivElement>(null);
-	const gravity = getRandomIntInclusive(RANDOMMIN, RANDOMMAX);
 
 	return (
 		<div className="h-screen w-full" ref={canvasRef}>
@@ -22,7 +18,7 @@ export const TestScene = () => {
 				<ambientLight intensity={0.1} />
 				<directionalLight color="#dfdedf" position={[0, 0, 5]} />
 				<Suspense fallback={null}>
-					<Physics gravity={[gravity, -20, 0]}>
+					<Physics gravity={[0, -20, 0]}>
 						<Furnitures canvasRef={canvasRef} />
 					</Physics>
 				</Suspense>

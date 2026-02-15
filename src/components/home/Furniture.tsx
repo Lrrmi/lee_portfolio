@@ -4,16 +4,12 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { type RapierRigidBody, RigidBody } from "@react-three/rapier";
 import { type RefObject, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { getRandomIntInclusive } from "./TestScene";
 
 type FallingCubeProps = {
 	initialPosition: [number, number, number];
 	canvasRef: RefObject<HTMLDivElement | null>;
 	glbPath: string;
 };
-
-const RANDOMMIN = -50;
-const RANDOMMAX = 50;
 
 // TODO Clean this function up
 export const Furniture = ({
@@ -31,8 +27,9 @@ export const Furniture = ({
 	const { camera, mouse, raycaster } = useThree();
 
 	const handlePointerDown = (e: MouseEvent) => {
+        e.stopPropagation();
 		if (!furnitureRef.current) return;
-		e.stopPropagation();
+	
 		dragging.current = true;
 		furnitureRef.current.setBodyType(
 			RigidBodyType.KinematicVelocityBased,
@@ -101,9 +98,8 @@ export const Furniture = ({
 				true,
 			);
 
-			// Adding a little more spin factor for good measure
 			furnitureRef.current.setLinvel(
-				{ x: getRandomIntInclusive(RANDOMMIN, RANDOMMAX), y: 0, z: 0 },
+				{ x: 0, y: 0, z: 0 },
 				true,
 			);
 			furnitureRef.current.setAngvel(

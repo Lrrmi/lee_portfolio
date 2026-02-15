@@ -13,8 +13,7 @@ export const Furnitures = ({
 }) => {
 	const projects = furnitures.map(({ glb: [glb] }) => glb);
 
-    return (
-	projects.map((project) => {
+	return projects.map((project) => {
 		return (
 			<Furniture
 				key={project}
@@ -22,5 +21,6 @@ export const Furnitures = ({
 				canvasRef={canvasRef}
 				glbPath={project}
 			/>
-		)
-    }))}
+		);
+	});
+};
