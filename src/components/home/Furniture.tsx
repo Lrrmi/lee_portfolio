@@ -1,6 +1,6 @@
 import { RigidBodyType } from "@dimforge/rapier3d-compat";
 import { useGLTF } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { type RapierRigidBody, RigidBody } from "@react-three/rapier";
 import { type RefObject, useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -17,24 +17,25 @@ const RANDOMMAX = 50;
 const SPAWNHEIGHT = 250;
 
 // TODO Clean this function up
-export const Furniture = ({
-	index,
-	canvasRef,
-	glbPath,
-}: FallingCubeProps) => {
+export const Furniture = ({ index, canvasRef, glbPath }: FallingCubeProps) => {
 	const furnitureRef = useRef<RapierRigidBody | null>(null);
 	const dragging = useRef(false);
 	const dragTarget = useRef(new THREE.Vector3());
 	const dragPlane = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
 	const gltf = useGLTF(glbPath);
-	
+	const spawn = useRef({
+		x: getRandomIntInclusive(RANDOMMIN, RANDOMMAX),
+		y: SPAWNHEIGHT + index * 250,
+		z: 0,
+	});
+
 	const groundPos = -1000;
 	const { camera, mouse, raycaster } = useThree();
 
-	const handlePointerDown = (e: MouseEvent) => {
-        e.stopPropagation();
+	const handlePointerDown = (e: ThreeEvent<PointerEvent>) => {
+		e.stopPropagation();
 		if (!furnitureRef.current) return;
-	
+
 		dragging.current = true;
 		furnitureRef.current.setBodyType(
 			RigidBodyType.KinematicVelocityBased,
@@ -61,28 +62,17 @@ export const Furniture = ({
 		};
 
 		if (!furnitureRef.current) return;
-		furnitureRef.current.setTranslation(
-    {
-      x: getRandomIntInclusive(RANDOMMIN, RANDOMMAX),
-      y: SPAWNHEIGHT + index * 250,
-      z: 0
-    },
-    true
-  );
 
-  furnitureRef.current.setLinvel(
-				{ x: 0, y: 0, z: 0 },
-				true,
-			);
+		furnitureRef.current.setLinvel({ x: 0, y: 0, z: 0 }, true);
 
-  furnitureRef.current.setAngvel(
-				{
-					x: Math.random() * 4 - 1,
-					y: Math.random() * 4 - 1,
-					z: Math.random() * 2 - 1,
-				},
-				true,
-			);
+		furnitureRef.current.setAngvel(
+			{
+				x: Math.random() * 4 - 1,
+				y: Math.random() * 4 - 1,
+				z: Math.random() * 2 - 1,
+			},
+			true,
+		);
 
 		window.addEventListener("pointerup", release);
 		return () => window.removeEventListener("pointerup", release);
@@ -97,7 +87,6 @@ export const Furniture = ({
 
 	useFrame(({ camera }) => {
 		if (!furnitureRef.current || dragging.current) return;
-		console.log("camera and not dragging(?)", dragging.current);
 
 		const { y } = furnitureRef.current.translation();
 
@@ -127,10 +116,7 @@ export const Furniture = ({
 				true,
 			);
 
-			furnitureRef.current.setLinvel(
-				{ x: 0, y: 0, z: 0 },
-				true,
-			);
+			furnitureRef.current.setLinvel({ x: 0, y: 0, z: 0 }, true);
 			furnitureRef.current.setAngvel(
 				{
 					x: Math.random() * 4 - 1,
@@ -172,6 +158,7 @@ export const Furniture = ({
 			angularDamping={0.5}
 			enabledTranslations={[true, true, false]}
 			enabledRotations={[true, true, true]}
+			position={[spawn.current.x, spawn.current.y, spawn.current.z]}
 		>
 			<primitive object={gltf.scene} onPointerDown={handlePointerDown} />
 		</RigidBody>
