@@ -4,16 +4,20 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { type RapierRigidBody, RigidBody } from "@react-three/rapier";
 import { type RefObject, useEffect, useRef } from "react";
 import * as THREE from "three";
+import { getRandomIntInclusive } from "./TestScene";
 
 type FallingCubeProps = {
-	initialPosition: [number, number, number];
 	canvasRef: RefObject<HTMLDivElement | null>;
 	glbPath: string;
+	index: number;
 };
+
+const RANDOMMIN = -50;
+const RANDOMMAX = 50;
 
 // TODO Clean this function up
 export const Furniture = ({
-	initialPosition,
+	index,
 	canvasRef,
 	glbPath,
 }: FallingCubeProps) => {
@@ -55,6 +59,30 @@ export const Furniture = ({
 			furnitureRef.current.setBodyType(RigidBodyType.Dynamic, true);
 		};
 
+		if (!furnitureRef.current) return;
+		furnitureRef.current.setTranslation(
+    {
+      x: getRandomIntInclusive(RANDOMMIN, RANDOMMAX),
+      y: 250 + index * 250,
+      z: 0
+    },
+    true
+  );
+
+  furnitureRef.current.setLinvel(
+				{ x: 0, y: 0, z: 0 },
+				true,
+			);
+
+  furnitureRef.current.setAngvel(
+				{
+					x: Math.random() * 4 - 1,
+					y: Math.random() * 4 - 1,
+					z: Math.random() * 2 - 1,
+				},
+				true,
+			);
+
 		window.addEventListener("pointerup", release);
 		return () => window.removeEventListener("pointerup", release);
 	}, []);
@@ -93,7 +121,7 @@ export const Furniture = ({
 				{
 					x: randomX,
 					y: spawnHeight,
-					z: initialPosition[2],
+					z: 0,
 				},
 				true,
 			);

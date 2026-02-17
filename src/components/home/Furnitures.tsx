@@ -1,10 +1,6 @@
 import type { RefObject } from "react";
 import furnitures from "../../images.json";
 import { Furniture } from "./Furniture";
-import { getRandomIntInclusive } from "./TestScene";
-
-const RANDOMMIN = -50;
-const RANDOMMAX = 50;
 
 export const Furnitures = ({
 	canvasRef,
@@ -13,11 +9,11 @@ export const Furnitures = ({
 }) => {
 	const projects = furnitures.map(({ glb: [glb] }) => glb);
 
-	return projects.map((project) => {
+	return projects.map((project, index) => {
 		return (
 			<Furniture
 				key={project}
-				initialPosition={[getRandomIntInclusive(RANDOMMIN, RANDOMMAX), 250, 0]}
+				index={index}
 				canvasRef={canvasRef}
 				glbPath={project}
 			/>
