@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 
 export const ContactPage = () => {
 	return (
-		<>
+		<div className="w-5/6 mx-auto">
 			<div className="flex flex-row flex-1 text-[#dfdedf]">
 				<div className="contact">
 					<div>
@@ -59,6 +59,6 @@ export const ContactPage = () => {
 			<Separator />
 			<br />
 			<br />
-		</>
+		</div>
 	);
 };

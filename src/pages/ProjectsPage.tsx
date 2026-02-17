@@ -9,7 +9,7 @@ export const ProjectsPage = () => {
 	const scrollAmount = 1500;
 
 	return (
-		<div className="flex">
+		<div className="flex w-5/6 mx-auto">
 			<div className="hidden md:flex md:flex-col w-1/8 gap-2 mt-20 text-[#dfdedf]">
 				{projs.map((proj) => (
 					<Link

@@ -3,7 +3,7 @@ import profilePic from "../assets/images/DSC_9635.jpg";
 
 export const AboutPage = () => {
 	return (
-		<div className="text-[#dfdedf]">
+		<div className="text-[#dfdedf] w-5/6 mx-auto">
 			<h2 className="text-center sm:text-left text-4xl">Design Philosophy</h2>
 			<br />
 			<p className="text-justify sm:flex sm:flex-row-reverse">
