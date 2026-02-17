@@ -4,7 +4,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { type RapierRigidBody, RigidBody } from "@react-three/rapier";
 import { type RefObject, useEffect, useRef } from "react";
 import * as THREE from "three";
-import { getRandomIntInclusive } from "./TestScene";
+import { getRandomIntInclusive } from "./FallingFurnitureScene";
 
 type FallingCubeProps = {
 	canvasRef: RefObject<HTMLDivElement | null>;
