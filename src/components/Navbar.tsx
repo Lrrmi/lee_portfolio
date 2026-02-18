@@ -26,7 +26,7 @@ export const Navbar = () => {
 						<NavigationMenuItem key={navItem}>
 							<Link
 								to={`/${navItem}` as string}
-								className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !md:m-2"
+								className="!text-[#dfdedf] !hover:bg-transparent !hover:text-inherit !m-1 !md:m-2"
 								activeProps={{
 									className: "text-foreground underline",
 								}}
