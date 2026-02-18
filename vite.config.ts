@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
 	plugins: [
 		tanstackRouter({
 			target: "react",
@@ -13,10 +13,10 @@ export default defineConfig({
 		react(),
 		tailwindcss(),
 	],
-	base: "/lee_portfolio/",
+	base: command === "build" ? "/lee_portfolio/" : "/",
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
-});
+}));
