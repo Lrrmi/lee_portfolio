@@ -1,7 +1,7 @@
 import type { RefObject } from "react";
 import furnitures from "../../images.json";
-import { Furniture } from "./Furniture";
 import { modelPaths } from "../../scripts/convertImages";
+import { Furniture } from "./Furniture";
 
 const MAXNUMPROJECTS = 8;
 // Fisher-yates shuffle algo
