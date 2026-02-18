@@ -1,6 +1,7 @@
 import type { RefObject } from "react";
 import furnitures from "../../images.json";
 import { Furniture } from "./Furniture";
+import { modelPaths } from "../../scripts/convertImages";
 
 const MAXNUMPROJECTS = 8;
 // Fisher-yates shuffle algo
@@ -20,7 +21,7 @@ export const Furnitures = ({
 }: {
 	canvasRef: RefObject<HTMLDivElement | null>;
 }) => {
-	const projects = furnitures.map(({ glb: [glb] }) => glb);
+	const projects = furnitures.map(({ glb: [glb] }) => glb).concat(modelPaths);
 	const randomProjects = shuffle(projects).slice(0, MAXNUMPROJECTS);
 
 	return randomProjects.map((project, index) => {

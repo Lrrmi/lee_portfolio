@@ -20,3 +20,10 @@ export const galleryImages = Object.entries(potpourriFiles).map(
 		};
 	},
 );
+
+const modelsFiles = import.meta.glob<string>(
+	"/src/assets/models/**/*.glb",
+	{ eager: true, as: "url" },
+);
+
+export const modelPaths = Object.values(modelsFiles);
