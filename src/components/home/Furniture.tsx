@@ -101,6 +101,7 @@ export const Furniture = ({ index, canvasRef, glbPath }: FallingCubeProps) => {
 			}
 
 			const distance = SPAWNHEIGHT - camera.position.y;
+			// @ts-ignore
 			const fov = camera.fov;
 			const aspect = width / height;
 			const visibleHeight = 2 * distance * Math.tan((fov * Math.PI) / 180 / 2);
