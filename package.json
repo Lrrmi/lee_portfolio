@@ -10,7 +10,7 @@
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"format": "exec biome check --write",
-		"prebuild": "node src/scripts/generate-images.mjs",
+		"prebuild": "node src/scripts/generate-images.js",
 		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
