@@ -2,6 +2,7 @@ import {
 	createRootRoute,
 	createRoute,
 	createRouter,
+	createHashHistory
 } from "@tanstack/react-router";
 
 import App from "./App";
@@ -63,6 +64,7 @@ const routeTree = rootRoute.addChildren([
 
 export const router = createRouter({
 	routeTree,
+	history: createHashHistory(),
 });
 
 declare module "@tanstack/react-router" {
