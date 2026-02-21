@@ -78,5 +78,5 @@ You should see after it runs something that says `images.json generated, ignorin
 ## Contact
 
 * **Email:** [rmladams25@gmail.com](mailto:rmladams25@gmail.com)
-* **GitHub:** [github.com/lrrmi](https://github.com/yourusername)
+* **GitHub:** [github.com/lrrmi](https://github.com/lrrmi)
 * **LinkedIn:** [linkedin.com/in/robertleeadams](https://www.linkedin.com/in/robertleeadams)
